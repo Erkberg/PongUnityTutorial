@@ -1,0 +1,37 @@
+core:
+walls
+ball
+score zones
+reset ball
+score UI
+game state / game manager
+paddles
+player input
+reset properly
+
+improvements:
+faster ball
+better physics
+dotted line
+
+ui / flow:
+start button
+controls tutorial
+win screen
+animated score UI
+
+audio:
+sounds
+music
+volume slider
+
+effects:
+trail
+stars background
+collision particles
+screenshake
+
+more:
+ai opponent
+change ball angle
+build
