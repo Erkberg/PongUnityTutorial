@@ -1,9 +1,4 @@
 core:
-walls
-ball
-score zones
-reset ball
-score UI
 game state / game manager
 paddles
 player input
