@@ -1,10 +1,5 @@
-core:
-game state / game manager
-paddles
-player input
-reset properly
-
 improvements:
+reset properly
 faster ball
 better physics
 dotted line
