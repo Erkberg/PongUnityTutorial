@@ -1,8 +1,7 @@
 improvements:
-reset properly
-faster ball
 better physics
 dotted line
+reset ball and paddles
 
 ui / flow:
 start button

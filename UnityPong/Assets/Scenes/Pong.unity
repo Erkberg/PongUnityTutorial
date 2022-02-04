@@ -658,9 +658,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1971595343}
   rb2d: {fileID: 980315934}
-  maxInitialAngle: 0.67
+  maxInitialAngle: 0
   moveSpeed: 8
   maxStartY: 4
+  speedMultiplier: 1.1
 --- !u!1001 &1237752246
 PrefabInstance:
   m_ObjectHideFlags: 0

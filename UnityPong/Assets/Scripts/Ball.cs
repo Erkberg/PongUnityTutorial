@@ -9,6 +9,7 @@ public class Ball : MonoBehaviour
     public float maxInitialAngle = 0.67f;
     public float moveSpeed = 1f;    
     public float maxStartY = 4f;
+    public float speedMultiplier = 1.1f;
 
     private float startX = 0f;
 
@@ -40,6 +41,15 @@ public class Ball : MonoBehaviour
             gameManager.OnScoreZoneReached(scoreZone.id);
             ResetBall();
             InitialPush();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Paddle paddle = collision.collider.GetComponent<Paddle>();
+        if(paddle)
+        {
+            rb2d.velocity *= speedMultiplier;
         }
     }
 }
