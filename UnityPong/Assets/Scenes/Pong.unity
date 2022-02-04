@@ -543,7 +543,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Positions:
   - {x: 0, y: 5, z: 0}
   - {x: 0, y: -5, z: 0}
@@ -786,9 +786,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dceca397dd7d7364d97c40e6011ab2fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1971595343}
   rb2d: {fileID: 980315934}
-  maxInitialAngle: 0.1
+  maxInitialAngle: 0.67
   moveSpeed: 8
   maxStartY: 4
   speedMultiplier: 1.1

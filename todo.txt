@@ -1,6 +1,3 @@
-improvements:
-reset ball and paddles
-
 ui / flow:
 start button
 controls tutorial
