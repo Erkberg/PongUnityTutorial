@@ -1,5 +1,4 @@
 improvements:
-better physics
 dotted line
 reset ball and paddles
 
