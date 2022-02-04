@@ -1,5 +1,4 @@
 improvements:
-dotted line
 reset ball and paddles
 
 ui / flow:
