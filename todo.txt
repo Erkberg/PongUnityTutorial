@@ -1,6 +1,4 @@
-ui / flow:
-controls tutorial
-animated score UI
+ui / animation / flow:
 start button
 win screen
 cleanup event subscriptions
