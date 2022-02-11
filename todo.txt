@@ -1,8 +1,10 @@
 ui / flow:
-start button
 controls tutorial
-win screen
 animated score UI
+start button
+win screen
+cleanup event subscriptions
+
 
 audio:
 sounds
