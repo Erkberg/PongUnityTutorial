@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     public Rigidbody2D rb2d;
+    public BallAudio ballAudio;
     public float maxInitialAngle = 0.67f;
     public float moveSpeed = 1f;    
     public float maxStartY = 4f;
@@ -53,7 +54,14 @@ public class Ball : MonoBehaviour
         Paddle paddle = collision.collider.GetComponent<Paddle>();
         if(paddle)
         {
+            ballAudio.PlayPaddleSound();
             rb2d.velocity *= speedMultiplier;
+        }
+
+        Wall wall = collision.collider.GetComponent<Wall>();
+        if (wall)
+        {
+            ballAudio.PlayWallSound();
         }
     }
 }

@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public GameUI gameUI;
+    public GameAudio gameAudio;
     public int scorePlayer1, scorePlayer2;
     public System.Action onReset;
     public int maxScore = 4;
@@ -36,7 +37,7 @@ public class GameManager : MonoBehaviour
 
         if (id == 2)
             scorePlayer2++;
-
+        
         gameUI.UpdateScores(scorePlayer1, scorePlayer2);
         gameUI.HighlightScore(id);
         CheckWin();
@@ -49,10 +50,12 @@ public class GameManager : MonoBehaviour
         if (winnerId != 0)
         {
             gameUI.OnGameEnds(winnerId);
+            gameAudio.PlayWinSound();
         }
         else
         {
             onReset?.Invoke();
+            gameAudio.PlayScoreSound();
         }
     }
 
