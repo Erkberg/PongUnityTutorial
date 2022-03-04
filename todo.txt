@@ -1,6 +1,3 @@
-audio:
-volume slider
-
 effects:
 trail
 stars background
