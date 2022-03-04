@@ -1,6 +1,5 @@
 audio:
-sounds
-music
+implement music and sounds
 volume slider
 
 effects:
