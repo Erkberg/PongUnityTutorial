@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public GameUI gameUI;
     public GameAudio gameAudio;
+    public Shake screenshake;
     public int scorePlayer1, scorePlayer2;
     public System.Action onReset;
     public int maxScore = 4;
