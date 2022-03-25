@@ -1,8 +1,8 @@
 effects:
-trail
-stars background
 collision particles
+stars background
 screenshake
+post processing
 
 more:
 ai opponent
