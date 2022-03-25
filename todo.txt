@@ -1,6 +1,4 @@
 effects:
-collision particles
-stars background
 screenshake
 post processing
 

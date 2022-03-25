@@ -6,6 +6,7 @@ public class Ball : MonoBehaviour
 {
     public Rigidbody2D rb2d;
     public BallAudio ballAudio;
+    public ParticleSystem collisionParticle;
     public float maxInitialAngle = 0.67f;
     public float moveSpeed = 1f;    
     public float maxStartY = 4f;
@@ -31,6 +32,8 @@ public class Ball : MonoBehaviour
 
         dir.y = Random.Range(-maxInitialAngle, maxInitialAngle);
         rb2d.velocity = dir * moveSpeed;
+
+        EmitParticle(32);
     }
 
     private void ResetBallPosition()
@@ -56,12 +59,19 @@ public class Ball : MonoBehaviour
         {
             ballAudio.PlayPaddleSound();
             rb2d.velocity *= speedMultiplier;
+            EmitParticle(16);
         }
 
         Wall wall = collision.collider.GetComponent<Wall>();
         if (wall)
         {
             ballAudio.PlayWallSound();
+            EmitParticle(8);
         }
+    }
+
+    private void EmitParticle(int amount)
+    {
+        collisionParticle.Emit(amount);
     }
 }
