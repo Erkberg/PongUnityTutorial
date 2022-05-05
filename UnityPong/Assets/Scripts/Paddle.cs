@@ -7,8 +7,11 @@ public class Paddle : MonoBehaviour
     public Rigidbody2D rb2d;
     public int id;
     public float moveSpeed = 2f;
+    public float aiDeadzone = 1f;
 
     private Vector3 startPosition;
+    private int direction = 0;
+    private float moveSpeedMultiplier = 1f;
 
     private void Start()
     {
@@ -23,8 +26,39 @@ public class Paddle : MonoBehaviour
 
     private void Update()
     {
-        float movement = ProcessInput();
-        Move(movement);
+        if(IsAi())
+        {
+            MoveAi();
+        }
+        else
+        {
+            float movement = ProcessInput();
+            Move(movement);
+        }        
+    }
+
+    private bool IsAi()
+    {
+        bool isPlayer1Ai = id == 1 && GameManager.instance.IsPlayer1Ai();
+        bool isPlayer2Ai = id == 2 && GameManager.instance.IsPlayer2Ai();
+        return isPlayer1Ai || isPlayer2Ai;
+    }
+
+    private void MoveAi()
+    {
+        Vector2 ballPos = GameManager.instance.ball.transform.position;
+        
+        if (Mathf.Abs(ballPos.y - transform.position.y) > aiDeadzone)
+        {
+            direction = ballPos.y > transform.position.y ? 1 : -1;
+        }
+
+        if (Random.value < 0.01f)
+        {
+            moveSpeedMultiplier = Random.Range(0.5f, 1.5f);
+        }
+
+        Move(direction);
     }
 
     private float ProcessInput()
@@ -47,7 +81,7 @@ public class Paddle : MonoBehaviour
     private void Move(float movement)
     {
         Vector2 velo = rb2d.velocity;
-        velo.y = moveSpeed * movement;
+        velo.y = moveSpeed * moveSpeedMultiplier * movement;
         rb2d.velocity = velo;
     }
 }

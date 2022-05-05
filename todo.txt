@@ -1,5 +1,3 @@
-more:
-ai opponent
-change ball angle
-build
-cleanup event subscriptions / eventmanager
+change ball angle & build
+cleanup (event subscriptions / eventmanager)
+outlook
