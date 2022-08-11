@@ -84,4 +84,14 @@ public class Paddle : MonoBehaviour
         velo.y = moveSpeed * moveSpeedMultiplier * movement;
         rb2d.velocity = velo;
     }
+
+    public float GetHeight()
+    {
+        return transform.localScale.y;
+    }
+
+    public bool IsLeftPaddle()
+    {
+        return id == 1;
+    }
 }
