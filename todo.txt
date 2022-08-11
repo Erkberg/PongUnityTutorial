@@ -1,6 +1,2 @@
-build
-upload
-
-
 cleanup (events)
 outlook
