@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     public Rigidbody2D rb2d;
+    public SpriteRenderer spriteRenderer;
     public BallAudio ballAudio;
     public ParticleSystem collisionParticle;
     public float maxInitialAngle = 0.67f;
@@ -73,6 +74,8 @@ public class Ball : MonoBehaviour
             EmitParticle(8);
             GameManager.instance.screenshake.StartShake(0.033f, 0.033f);
         }
+
+        AdjustSpriteRotation();
     }
 
     private void AdjustAngle(Paddle paddle, Collision2D collision)
@@ -103,6 +106,11 @@ public class Ball : MonoBehaviour
         Vector2 velocity = rot * dir * rb2d.velocity.magnitude;
         rb2d.velocity = velocity;
         Debug.DrawRay(median, velocity, Color.green, 1f);
+    }
+
+    private void AdjustSpriteRotation()
+    {
+        spriteRenderer.flipY = rb2d.velocity.x < 0f;
     }
 
     private void EmitParticle(int amount)

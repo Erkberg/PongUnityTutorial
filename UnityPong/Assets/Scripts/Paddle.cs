@@ -5,6 +5,7 @@ using UnityEngine;
 public class Paddle : MonoBehaviour
 {
     public Rigidbody2D rb2d;
+    public BoxCollider2D coll2d;
     public int id;
     public float moveSpeed = 2f;
     public float aiDeadzone = 1f;
@@ -87,7 +88,7 @@ public class Paddle : MonoBehaviour
 
     public float GetHeight()
     {
-        return transform.localScale.y;
+        return coll2d.size.y;
     }
 
     public bool IsLeftPaddle()
