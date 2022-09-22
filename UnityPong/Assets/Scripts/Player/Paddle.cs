@@ -8,11 +8,17 @@ public class Paddle : MonoBehaviour
     public BoxCollider2D coll2d;
     public int id;
     public float moveSpeed = 2f;
+
+    [Header("AI")]
     public float aiDeadzone = 1f;
+    public float aiMoveSpeedMultiplierMin = 0.5f, aiMoveSpeedMultiplierMax = 1.5f;
 
     private Vector3 startPosition;
     private int direction = 0;
     private float moveSpeedMultiplier = 1f;
+
+    private const string MovePlayer1InputName = "MovePlayer1";
+    private const string MovePlayer2InputName = "MovePlayer2";
 
     private void Start()
     {
@@ -33,15 +39,15 @@ public class Paddle : MonoBehaviour
         }
         else
         {
-            float movement = ProcessInput();
+            float movement = GetInput();
             Move(movement);
         }        
     }
 
     private bool IsAi()
     {
-        bool isPlayer1Ai = id == 1 && GameManager.instance.IsPlayer1Ai();
-        bool isPlayer2Ai = id == 2 && GameManager.instance.IsPlayer2Ai();
+        bool isPlayer1Ai = IsLeftPaddle() && GameManager.instance.IsPlayer1Ai();
+        bool isPlayer2Ai = !IsLeftPaddle() && GameManager.instance.IsPlayer2Ai();
         return isPlayer1Ai || isPlayer2Ai;
     }
 
@@ -56,27 +62,15 @@ public class Paddle : MonoBehaviour
 
         if (Random.value < 0.01f)
         {
-            moveSpeedMultiplier = Random.Range(0.5f, 1.5f);
+            moveSpeedMultiplier = Random.Range(aiMoveSpeedMultiplierMin, aiMoveSpeedMultiplierMax);
         }
 
         Move(direction);
     }
 
-    private float ProcessInput()
+    private float GetInput()
     {
-        float movement = 0f;
-        switch (id)
-        {
-            case 1:
-                movement = Input.GetAxis("MovePlayer1");
-                break;
-
-            case 2:
-                movement = Input.GetAxis("MovePlayer2");
-                break;
-        }
-
-        return movement;
+        return IsLeftPaddle() ? Input.GetAxis(MovePlayer1InputName) : Input.GetAxis(MovePlayer2InputName);
     }
 
     private void Move(float movement)

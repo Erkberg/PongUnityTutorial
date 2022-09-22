@@ -7,6 +7,7 @@ public class GameUI : MonoBehaviour
 {
     public ScoreText scoreTextPlayer1, scoreTextPlayer2;
     public GameObject menuObject;
+    public GameObject quitButton;
     public TextMeshProUGUI winText;
     public TextMeshProUGUI playModeButtonText;
     public TextMeshProUGUI volumeValueText;
@@ -16,6 +17,7 @@ public class GameUI : MonoBehaviour
     private void Start()
     {
         AdjustPlayModeButtonText();
+        CheckDisableQuitButton();
     }
 
     public void UpdateScores(int scorePlayer1, int scorePlayer2)
@@ -54,6 +56,18 @@ public class GameUI : MonoBehaviour
     {
         GameManager.instance.SwitchPlayMode();
         AdjustPlayModeButtonText();
+    }
+
+    public void OnQuitButtonClicked()
+    {
+        Application.Quit();
+    }
+
+    private void CheckDisableQuitButton()
+    {
+#if UNITY_WEBGL
+        quitButton.SetActive(false);
+#endif
     }
 
     private void AdjustPlayModeButtonText()
